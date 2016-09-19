@@ -1,0 +1,24 @@
+<?php
+
+//$Id: italy.module,v 1.3 2016/05/04 21:22:22 cvs-uccio Exp $
+
+function italy_ListProvince(){
+    $query = db_select('italy_province', 'b');
+    $query->fields('b', array('targa', 'provincia'));
+    $query->orderBy('provincia','ASC');
+    return $query->execute()->fetchAllKeyed(0, 1);
+}
+
+function italy_ListRegioni(){
+    $query = db_select('italy_regioni', 'r');
+    $query->fields('r', array('id_regione', 'regione'));
+    $query->orderBy('regione','ASC');
+  return $query->execute()->fetchAllKeyed(0, 1);
+}
+
+function italy_regione_ListProvincie($id_regione, $key = 'targa',$label = 'provincia'){
+  $query = db_select('italy_province', 'p');
+  $query->fields('p', array($key, $label));
+  $query->condition('id_regione', $id_regione);
+  return $query->execute()->fetchAllKeyed(0, 1);
+}

@@ -1,0 +1,66 @@
+<?php
+//$id$
+/*
+ * @file
+ * Install, update, and uninstall functions for the anagrafica module.
+ */
+
+function italy_uninstall() {
+  // Remove tables.
+  drupal_uninstall_schema('italy');
+}
+
+
+/**
+ * Implementation of hook_schema().
+ */
+function italy_schema() {
+  $schema = array();
+  /*
+  $schema['italy_cap'] = array(
+    'fields' => array(
+      //indici
+      'id'          => array('type' => 'serial' , 'unsigned' => TRUE, 'not null' => TRUE),
+      'cod_istat'   => array('type' => 'varchar', 'length' => 6,'not null'   => TRUE),
+      'comune'      => array('type' => 'varchar', 'length' => 200,'not null' => TRUE, 'default' => ''),
+      'prefisso'    => array('type' => 'varchar', 'length' => 6,'not null'   => TRUE, 'default' => ''),
+      'cap'         => array('type' => 'varchar', 'length' => 9,'not null'   => TRUE, 'default' => ''),
+    ),
+    'primary key' => array('id'),
+    'indexes' => array(),
+  );
+  */
+  $schema['italy_province'] = array(
+    'fields' => array(
+      //indici
+      'id_provincia'          => array('type' => 'serial' , 'unsigned' => TRUE, 'not null' => TRUE),
+      'id_regione' => array('type' => 'int', 'not null' => TRUE,),
+      'provincia'    => array('type' => 'varchar', 'length' => 28,'not null'   => TRUE, 'default' => ''),
+      'targa'         => array('type' => 'varchar', 'length' => 2,'not null'   => TRUE, 'default' => ''),
+    ),
+    'primary key' => array('id_provincia'),
+    'indexes' => array(array('id_regione'))
+  );
+
+  $schema['italy_regioni'] = array(
+    'fields' => array(
+      //indici
+      'id_regione'          => array('type' => 'serial' , 'unsigned' => TRUE, 'not null' => TRUE),
+      'regione'      => array('type' => 'varchar', 'length' => 100,'not null' => TRUE, 'default' => ''),
+
+    ),
+    'primary key' => array('id_regione'),
+    'indexes' => array(),
+  );
+
+
+  return $schema;
+}
+function italy_install() {
+  $sql = file_get_contents(drupal_get_path('module', 'italy') . '/regioni.sql');
+  db_query("$sql");
+  $sql = file_get_contents(drupal_get_path('module', 'italy') . '/province.sql');
+  db_query("$sql");
+
+}
+

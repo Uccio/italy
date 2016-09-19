@@ -1,0 +1,9 @@
+;$id$
+name = Italy
+description = This module is an Italian Utility
+core = 7.x
+package = Uccio
+version = 7.x.1
+datestamp = "1412961135"
+
+
