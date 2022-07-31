@@ -22,3 +22,11 @@ function italy_regione_ListProvincie($id_regione, $key = 'targa',$label = 'provi
   $query->condition('id_regione', $id_regione);
   return $query->execute()->fetchAllKeyed(0, 1);
 }
+
+function italy_ListStati($lengh = 50){
+  $query = db_select('italy_stati', 's');
+  $query->fields('s', array('id_stato'));
+  $query->addExpression("SUBSTRING(stato, 1, $lengh)", 'stato');
+  $query->orderBy('id_stato','ASC');
+  return $query->execute()->fetchAllKeyed(0, 1);
+}

@@ -6,4 +6,7 @@ package = Uccio
 version = 7.x.1
 datestamp = "1412961135"
 
-
+;  Aggiungiamo gli stati
+version = "7.x-1.1"
+core = "7.x"
+datestamp = "1659304707"

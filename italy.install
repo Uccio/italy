@@ -53,6 +53,16 @@ function italy_schema() {
     'indexes' => array(),
   );
 
+  $schema['italy_stati'] = array(
+    'fields' => array(
+      //indici
+      'id_stato'      => array('type' => 'char' , 'length' => 2, 'not null' => TRUE),
+      'stato'      => array('type' => 'varchar', 'length' => 50,'not null' => TRUE, 'default' => ''),
+    ),
+    'primary key' => array('id_stato'),
+    'indexes' => array(),
+  );
+
 
   return $schema;
 }
@@ -62,5 +72,16 @@ function italy_install() {
   $sql = file_get_contents(drupal_get_path('module', 'italy') . '/province.sql');
   db_query("$sql");
 
+}
+/**
+ * Aggiunta la lista degli stati
+ *
+ */
+
+function italy_update_7001(){
+  $schema = italy_schema();
+  db_create_table('italy_stati',$schema['italy_stati']);
+  $sql = file_get_contents(drupal_get_path('module', 'italy') . '/stati.sql');
+  db_query("$sql");
 }
 

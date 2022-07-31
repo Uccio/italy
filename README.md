@@ -10,7 +10,7 @@ Alcuni esempi di come utilizzare le funzioni all'interno del modulo per creare d
           '#title' => t('Provincia'),
           '#empty_value' => '',
           );
-        
+
         $form['regione'] = array(
           '#weight' => 5,
           '#type' => 'select',
@@ -22,3 +22,4 @@ Alcuni esempi di come utilizzare le funzioni all'interno del modulo per creare d
 
 Rigraziamenti:
 - rickystra per i dati: https://github.com/rickystra/Regioni-province-comuni
+- https://datahub.io/core/country-list per l'elenco degli stati del mondo
