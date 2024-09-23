@@ -1,6 +1,6 @@
 name: Italy
 description: 'This module is an Italian Utility'
-core: 8.x
 package: Uccio
 type: module
+core_version_requirement: ^10 || ^11
 
