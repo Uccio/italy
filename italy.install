@@ -1,5 +1,4 @@
 <?php
-//$id$
 /*
  * @file
  * Install, update, and uninstall functions for the anagrafica module.
@@ -68,9 +67,9 @@ function italy_schema() {
 }
 function italy_install() {
   $sql = file_get_contents(drupal_get_path('module', 'italy') . '/regioni.sql');
-  db_query("$sql");
+  \Drupal::database()->query("$sql");
   $sql = file_get_contents(drupal_get_path('module', 'italy') . '/province.sql');
-  db_query("$sql");
+  \Drupal::database()->query("$sql");
 
 }
 /**
@@ -82,6 +81,6 @@ function italy_update_7001(){
   $schema = italy_schema();
   db_create_table('italy_stati',$schema['italy_stati']);
   $sql = file_get_contents(drupal_get_path('module', 'italy') . '/stati.sql');
-  db_query("$sql");
+  \Drupal::database()->query("$sql");
 }
 
