@@ -1,8 +1,7 @@
 {
     "name": "uccio/italy",
-    "description": "italy custom utility module",
+    "description": "Uccio Italy utility module",
     "type": "drupal-custom-module",
-    "minimum-stability": "stable",
     "license": "GPL-2.0-or-later",
     "authors": [
         {
@@ -10,6 +9,8 @@
             "email": "maurizio.panuccio@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
+
     }
 }
